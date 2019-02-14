@@ -3,6 +3,10 @@ class Main {
     public void main() {
     	int n = count+2;
     	n++;
+    	if (x && q < guy + rose) {
+//    		boolean hog = Gage instanceof Barry;
+			boolean hog = true;
+		}
     	while (true) {
     		int count = n+4;
     		foo(count);
@@ -10,4 +14,18 @@ class Main {
     }
     public void foo(int a) {
     }
+
+    public boolean foo(boolean k) {
+    	Jake myJake = new Jake();
+    	return k;
+	}
+
+}
+
+class Koro {
+
+}
+
+class Koro {
+
 }

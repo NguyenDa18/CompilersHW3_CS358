@@ -31,6 +31,7 @@ public class Sem1Visitor extends ASTvisitor {
 	}
 
 	protected void initGlobalSymTab() {
+		// PHASE I
 		ClassDecl classObjectDecl = createClass("Object", "");
 		ClassDecl classStringDecl = createClass("String", "Object");
 		ClassDecl classLibDecl = createClass("Lib", "Object");
@@ -71,6 +72,7 @@ public class Sem1Visitor extends ASTvisitor {
 		this.visitClassDecl(classDataArrayDecl);
 		this.visitClassDecl(classObjectArrayDecl);
 
+		// PHASE II
 		Sem2Visitor s2 = new Sem2Visitor(globalSymTab, errorMsg);
 		s2.visit(classObjectDecl);
 		s2.visit(classLibDecl);
@@ -78,7 +80,8 @@ public class Sem1Visitor extends ASTvisitor {
 		s2.visit(classRunMainDecl);
 		s2.visitClassDecl(classDataArrayDecl);
 		s2.visitClassDecl(classObjectArrayDecl);
-		
+
+		// PHASE III
 		Sem3Visitor s3 = new Sem3Visitor(globalSymTab, errorMsg);
 		s3.visit(classObjectDecl);
 		s3.visit(classLibDecl);
@@ -87,11 +90,17 @@ public class Sem1Visitor extends ASTvisitor {
 		s3.visitClassDecl(classDataArrayDecl);
 		s3.visitClassDecl(classObjectArrayDecl);
 	}
-	
+
+	// Enter each class declaration into the global symbol table)
+	// Duplicate class names are detected
 	protected static ClassDecl createClass(String name, String superName) {
+		ErrorMsg errorMsg = new ErrorMsg("Sem1Visitor");
+		errorMsg.info(name);
 		return new ClassDecl(-1, name, superName, new DeclList());
 	}
- 	
+
+	// Enter each method declaration into the method symbol table for its class
+	// Duplicate method names for a class are detected
 	protected static void addDummyMethod(ClassDecl dec, String methName,
 				String rtnTypeName, String[] parmTypeNames) {
 		VarDeclList parmDecls = new VarDeclList();
@@ -129,6 +138,8 @@ public class Sem1Visitor extends ASTvisitor {
 		}
 	}
 
+	// Enter each instance variable declaration into the respective instance-variable symbol table for its class
+	// Duplicate instance variable names for a class are detected
 	private void initInstanceVars() {
 		globalSymTab = new Hashtable<String,ClassDecl>();
 		currentClass = null;

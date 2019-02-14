@@ -48,8 +48,8 @@ public class Main3 {
 			this.openFiles();
 			AstNode ast = this.parseFile();
 			Hashtable<String,ClassDecl> globalTab = this.semanticPhase1(ast);
-			this.semanticPhase2(ast, globalTab);
-			this.semanticPhase3(ast, globalTab);
+//			this.semanticPhase2(ast, globalTab);
+//			this.semanticPhase3(ast, globalTab);
 //			this.semanticPhase4(ast, globalTab);
 //			this.semanticPhase5(ast, globalTab);
 //			this.cgPhase1(ast, globalTab);
@@ -238,6 +238,7 @@ public class Main3 {
 	public Hashtable<String,ClassDecl> semanticPhase1(AstNode ast) {
 		if (!errorMsg.anyErrors && ast != null && pass >= 2) {
 			Sem1Visitor vis = new Sem1Visitor(errorMsg);
+			errorMsg.info(vis.getGlobalSymTab().toString());
 			vis.visit(ast);
 			return vis.getGlobalSymTab();
 		}
