@@ -1,0 +1,76 @@
+To run the compiler project (Assignment 3) under IntelliJ ...
+
+On startup pane:
+  Press 'Create New Project'.
+  Press 'Java'.
+  (Do not check any "Additional Libraries and Frameworks.)
+  Press 'Next'.
+  (Do not check 'Create project from template'.)
+  Press 'Next'.
+  Project name: 'asst3' (or whatever you want to name it)
+  Project location: (browse to location you want--you will likely want
+    to create new folder by pressing 'New Folder' button, for example
+    'asst3')
+  Press 'Finish'.
+  (Project IDE window will be created.)
+
+Make sure starter project folder is on the same storage device as the
+project. (Otherwise, the 'move' of files into the project will fail.)
+
+On project IDE window, move starter files into project.
+  - (Make sure 'Project' is selected at top left.)
+  - press triangle in left pane to open up project folder (e.g., 'asst1')
+  - drag wrangler JAR file from 'jars' folder onto project folder icon
+    - press 'OK'
+    - press 'OK' (with 'I want to edit ...') if 'does not belong' pops up.
+  - drag any test .java files (e.g., TestSimp.java) onto project folder icon
+    - press 'OK'
+    - press 'OK' (with 'I want to edit ...') if 'does not belong' pops up.
+  - drag all folders from the starter-file's 'src' folder to the 'src'
+    folder icon
+    - press 'OK'
+  - drag the starter-file's 'lib' folder to the project folder icon
+    folder icon
+    - press 'OK'
+
+Install the WrangLR JAR file into the project:
+  - menu selection: File -> Project Structure
+  - press 'Modules' in left pane
+  - press 'Dependencies' tab
+  - press '+' button in lower-left of right pane
+  - select '1 JARs and directories ...'
+  - click on wrangLR jar file name
+  - press 'Open' button
+  - press 'OK button
+
+Install the lib folder into the project
+  - menu selection: File -> Project Structure
+  - press 'Modules' in left pane
+  - press 'Dependencies' tab
+  - press '+' button in lower-left of right pane
+  - select '1 JARs and directories ...'
+  - click on 'lib' folder icon
+  - press 'Open' button
+  - press 'OK button
+
+Ensure that the project builds.
+  - menu item: Build -> Build Project
+
+Run project:
+  - press triangle to open 'src' folder in left pane
+  - press triangle to open 'main' folder in left pane
+  - right-click (or on Mac, control-click) on 'Main3' class icon
+    menu: (green triangle) Run 'Main3.main()'
+
+First time run of the project, it should fail giving console message:
+  No input file name given
+To add the input file name:
+  - menu: Run -> Edit Configurations ...
+  - 'Configuration' tab
+  - Program arguments: "TestSimp.java -w" (or "TestSimp.java -pp") or
+    whatever source file name and display option you want)
+  - press 'OK'
+To rerun program, can do any of:
+- type control-R
+- press green triangle near top-right of window
+- menu item Run -> Run 'Main3'

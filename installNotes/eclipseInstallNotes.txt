@@ -1,0 +1,64 @@
+================================================================
+To set up an Eclipse project for Assignment 3
+================================================================
+
+Note: these are essentially the same instructions as for Assignment 2,
+except that there is no parser to build.
+
+- Run Eclipse.
+  - Select (or create) a workspace folder.
+    - (Close the "Welcome" window if it is open)
+  - New -> Project ... Java ... Java Project
+  - Next
+  - Project name: asst3
+    - Create new project in workspace
+    - JRE: should be at least 1.6
+    - Project layout: create separate ...
+    - Finish
+  - Unzip the starter file, creating the folder asst3Starter
+  - Drag all folders from asst3Starter/src onto the 'src' icon in the package
+    explorer.
+    - if it asks, select "copy files and folders", here and elsewhere
+      during this setup process
+  - Drag the asst3Starter/lib folder onto the 'asst3' icon in the package
+    explorer
+  - Drag the test file, TestSimp.java onto the 'asst3' icon in the packae
+    explorer.
+  - Drag the asst3Starter/jars folder onto the 'asst3' icon in the package
+    explorer
+  - Set up the lib file by:
+    - click on the 'asst3' icon in the package explorer.
+    - Project -> Properties
+    - Java Build Path
+    - Libraries tab
+    - Add ClassFolder ...
+    - click on the check-box that corresponds to lib under the asst3 project
+    - OK
+    - OK
+  - Set up the WrangLR JAR file by:
+    - click on the 'asst3' icon in the package explorer.
+    - Project -> Properties
+    - Java Build Path
+    - Libraries tab
+    - Add JARs ...
+    - open up 'asst3', then 'jars' in the pop-up window
+    - click on wrangLRv0_8.jar (or whatever the JAR file name is) in the
+      pop-up window
+    - OK
+    - OK
+
+================================================================
+Running the Project
+================================================================
+- right-click on Main3.java under src/main
+- Run As -> Java Application
+  - The first time WrangLR will report that is needs a file-name argument, so
+    add one:
+    - Run -> Run Configurations ...
+    - make sure that 'Main3' is selected in the left pane
+    - Arguments tab
+    - Type in the name of the input file followed by "-w" (or "pp") into the
+      "Program arguments:" text-field. (E.g., "TestSimp.java -w".)
+      - if successful, it will bring up a window that displays the AST
+    - Eclipse will remember this argument, so you don't need to do this
+      step unless you want to change argument.
