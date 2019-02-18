@@ -42,6 +42,7 @@ public class Sem1Visitor extends ASTvisitor {
 		addDummyMethod(classObjectDecl, "hashCode", "int", new String[]{});
 		addDummyMethod(classObjectDecl, "equals", "boolean", new String[]{"Object"});
 		addDummyMethod(classObjectDecl, "toString", "String", new String[]{});
+
 	    addDummyMethod(classLibDecl, "readLine", "String", new String[]{});
 	    addDummyMethod(classLibDecl, "readInt", "int", new String[]{});
 	    addDummyMethod(classLibDecl, "readChar", "int", new String[]{});
@@ -52,6 +53,7 @@ public class Sem1Visitor extends ASTvisitor {
 				new String[]{"int"});
 		addDummyMethod(classLibDecl, "intToChar", "String",
 				new String[]{"int"});
+
 		addDummyMethod(classStringDecl, "hashCode", "int", new String[]{});
 		addDummyMethod(classStringDecl, "equals", "boolean", new String[]{"Object"});
 		addDummyMethod(classStringDecl, "toString", "String", new String[]{});
@@ -95,9 +97,57 @@ public class Sem1Visitor extends ASTvisitor {
 	// Duplicate class names are detected
 	protected static ClassDecl createClass(String name, String superName) {
 		ErrorMsg errorMsg = new ErrorMsg("Sem1Visitor");
-		errorMsg.info(name);
 		return new ClassDecl(-1, name, superName, new DeclList());
 	}
+	////////////////////
+	// VISIT METHODS //
+	///////////////////
+
+	// Add class declarations to global symbol table
+	@Override
+	public Object visitClassDecl(ClassDecl myClass) {
+		if (!globalSymTab.containsKey(myClass.name)) {
+			globalSymTab.put(myClass.name, myClass);
+		}
+		else {
+			errorMsg.error(myClass.pos, "Error: duplicate class declaration: " + myClass.name);
+		}
+
+		// Set current class
+		currentClass = myClass;
+		
+
+		return super.visitClassDecl(myClass);
+	}
+
+	@Override
+	public Object visitInstVarDecl(InstVarDecl myVar) {
+		// Add instance var to class
+		if (!currentClass.instVarTable.containsKey(myVar.name)) {
+			currentClass.instVarTable.put(myVar.name, myVar);
+		}
+		else {
+			errorMsg.error(myVar.pos, "Error: duplicate instance variable declaration: " + myVar.name);
+			return null;
+		}
+		return null;
+	}
+
+	@Override
+	public Object visitMethodDecl(MethodDecl myMethod) {
+		// Add method to class
+		if (!currentClass.methodTable.containsKey(myMethod.name)) {
+			currentClass.methodTable.put(myMethod.name, myMethod);
+		}
+		else {
+			errorMsg.error(myMethod.pos, "Error: duplicate method declaration: " + myMethod.name);
+			return null;
+		}
+
+		return null;
+	}
+
+
 
 	// Enter each method declaration into the method symbol table for its class
 	// Duplicate method names for a class are detected

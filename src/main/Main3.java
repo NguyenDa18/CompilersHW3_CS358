@@ -238,7 +238,6 @@ public class Main3 {
 	public Hashtable<String,ClassDecl> semanticPhase1(AstNode ast) {
 		if (!errorMsg.anyErrors && ast != null && pass >= 2) {
 			Sem1Visitor vis = new Sem1Visitor(errorMsg);
-			errorMsg.info(vis.getGlobalSymTab().toString());
 			vis.visit(ast);
 			return vis.getGlobalSymTab();
 		}
