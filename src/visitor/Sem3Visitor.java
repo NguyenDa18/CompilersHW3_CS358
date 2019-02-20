@@ -38,6 +38,9 @@ public class Sem3Visitor extends ASTvisitor {
 		breakTargetStack = new Stack<BreakTarget>();
 		globalSymTab = globalTab;
 		localSymTab = new Hashtable<String,VarDecl>();
+
+
+
 		currentClass = null;
 	}
 

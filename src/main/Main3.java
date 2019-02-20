@@ -48,8 +48,8 @@ public class Main3 {
 			this.openFiles();
 			AstNode ast = this.parseFile();
 			Hashtable<String,ClassDecl> globalTab = this.semanticPhase1(ast);
-//			this.semanticPhase2(ast, globalTab);
-//			this.semanticPhase3(ast, globalTab);
+			this.semanticPhase2(ast, globalTab);
+			this.semanticPhase3(ast, globalTab);
 //			this.semanticPhase4(ast, globalTab);
 //			this.semanticPhase5(ast, globalTab);
 //			this.cgPhase1(ast, globalTab);

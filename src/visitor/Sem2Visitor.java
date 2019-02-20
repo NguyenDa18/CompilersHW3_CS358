@@ -25,6 +25,51 @@ public class Sem2Visitor extends ASTvisitor {
 	private void initInstanceVars(Hashtable<String,ClassDecl> globalTab) {
 		globalSymTab = globalTab;
 	}
+
+	@Override
+	public Object visitProgram(Program myProgram) {
+		// Visit all of our subnodes
+		super.visitProgram(myProgram);
+
+		// Perform class checks
+		for (ClassDecl classInstance: myProgram.classDecls) {
+			// Check not subclass of String and RunMain
+			if (classInstance.superName.equals("String")) {
+				errorMsg.error(classInstance.pos, "Error: cannot extend " + classInstance.name + " for String superclass");
+			}
+			else if (classInstance.superName.equals("RunMain")) {
+				errorMsg.error(classInstance.pos, "Error: cannot extend " + classInstance.name + " for RunMain superclass");
+			}
+
+			// Check for cycles: how???
+		}
+
+		return null;
+	}
+
+	// Link child and super classes
+	@Override
+	public Object visitClassDecl(ClassDecl classInstance) {
+		if (classInstance.superName != null) {
+
+			if (globalSymTab.containsKey(classInstance.superName)) {
+				classInstance.superLink = globalSymTab.get(classInstance.superName);
+				// classInstance.superLink.subclasses.addElement(classInstance);
+			}
+			else if (classInstance.superName.equals("")) {
+				// errorMsg.warning(classInstance.pos, "Empty supername");
+
+			}
+			else {
+				errorMsg.error(classInstance.pos, "Error: undefined super class name: " + classInstance.superName);
+			}
+		}
+		else {
+			errorMsg.error(classInstance.pos, "Error: null super class.");
+		}
+
+		return null;
+	}
 	
 }
 

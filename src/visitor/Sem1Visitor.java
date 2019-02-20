@@ -128,7 +128,6 @@ public class Sem1Visitor extends ASTvisitor {
 		}
 		else {
 			errorMsg.error(myVar.pos, "Error: duplicate instance variable declaration: " + myVar.name);
-			return null;
 		}
 		return null;
 	}
