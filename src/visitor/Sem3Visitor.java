@@ -17,8 +17,10 @@ import errorMsg.*;
 // - ensure that no instance variable has the name 'length'
 public class Sem3Visitor extends ASTvisitor {
 	
+	// maps class name to its ClassDecl node
 	Hashtable<String, ClassDecl> globalSymTab;
 	ClassDecl currentClass;
+
 	Hashtable<String, VarDecl> localSymTab;
 	Stack<BreakTarget> breakTargetStack;
 	
@@ -38,5 +40,28 @@ public class Sem3Visitor extends ASTvisitor {
 		localSymTab = new Hashtable<String,VarDecl>();
 		currentClass = null;
 	}
+
+	@Override
+	public Object visitMethodDecl(MethodDecl myMethod) {
+		this.localSymTab = new Hashtable<String, VarDecl>();
+		return super.visitMethodDecl(myMethod);
+	}
+
+	@Override
+	public Object visitInstVarDecl(InstVarDecl myInstVar) {
+		if (myInstVar.name.equals("length")) {
+			errorMsg.error(myInstVar.pos, "Error: variable cannot be named \" length \"");
+		}
+
+		return super.visitInstVarDecl(myInstVar);
+	}
+
+	@Override
+	public Object visitBlock(Block myBlock) {
+		super.visitBlock(myBlock);
+
+		return null;
+	}
+
 
 }
