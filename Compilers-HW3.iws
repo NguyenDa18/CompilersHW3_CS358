@@ -4,11 +4,7 @@
     <list default="true" id="fe88808c-6d17-41e3-acd7-055ba7b47771" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Compilers-HW3.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Compilers-HW3.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestSimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestSimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilers-HW3/visitor/Sem2Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilers-HW3/visitor/Sem2Visitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Compilers-HW3/visitor/Sem3Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compilers-HW3/visitor/Sem3Visitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitor/Sem1Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/Sem1Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/visitor/Sem2Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/Sem2Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visitor/Sem3Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visitor/Sem3Visitor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,14 +15,52 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.23232323">
+    <splitter split-orientation="horizontal" split-proportion="0.80918366">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Main3.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ErrorMsg.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/errorMsg/ErrorMsg.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="15">
+                  <caret line="44" selection-start-line="44" selection-end-line="44" />
+                  <folding>
+                    <element signature="e#998#999#0" expanded="true" />
+                    <element signature="e#1014#1015#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Sem2Visitor.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/visitor/Sem2Visitor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="260">
+                  <caret line="89" column="104" selection-start-line="89" selection-start-column="104" selection-end-line="89" selection-end-column="104" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Main3.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/Main3.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="107">
+                <state relative-caret-position="267">
                   <caret line="49" selection-start-line="49" selection-end-line="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ClassDecl.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDecl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="29">
+                  <caret line="46" selection-start-line="46" selection-end-line="46" />
+                  <folding>
+                    <element signature="e#1579#1580#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -34,7 +68,7 @@
           <file leaf-file-name="Sem1Visitor.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/visitor/Sem1Visitor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="107">
+                <state relative-caret-position="390">
                   <caret line="26" selection-start-line="26" selection-end-line="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -45,84 +79,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ErrorMsg.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/errorMsg/ErrorMsg.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="555">
-                  <caret line="44" selection-start-line="44" selection-end-line="44" />
-                  <folding>
-                    <element signature="e#998#999#0" expanded="true" />
-                    <element signature="e#1014#1015#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ClassDecl.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDecl.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="209">
-                  <caret line="46" selection-start-line="46" selection-end-line="46" />
-                  <folding>
-                    <element signature="e#1579#1580#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="InhVisitor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/visitor/InhVisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
-                  <folding>
-                    <element signature="e#162#163#0" expanded="true" />
-                    <element signature="e#5256#5257#0" expanded="true" />
-                    <element signature="e#5285#5286#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ASTvisitor.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/visitor/ASTvisitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="107">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Sem2Visitor.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/visitor/Sem2Visitor.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="810">
-                  <caret line="58" selection-start-line="58" selection-end-line="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AstList.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/syntaxtree/AstList.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
-                  <caret line="39" selection-start-line="39" selection-end-line="39" />
-                  <folding>
-                    <element signature="e#748#749#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TestSimp.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="TestSimp.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/TestSimp.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state>
-                  <caret column="15" selection-start-column="15" selection-end-column="15" />
+                  <caret column="30" selection-start-column="30" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -153,8 +114,8 @@
         <option value="$PROJECT_DIR$/src/visitor/Sem1Visitor.java" />
         <option value="$PROJECT_DIR$/src/main/Main3.java" />
         <option value="$PROJECT_DIR$/HW3Test.java" />
-        <option value="$PROJECT_DIR$/src/visitor/Sem2Visitor.java" />
         <option value="$PROJECT_DIR$/TestSimp.java" />
+        <option value="$PROJECT_DIR$/src/visitor/Sem2Visitor.java" />
       </list>
     </option>
   </component>
@@ -169,8 +130,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,7 +158,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,17 +270,17 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50110865" side_tool="true" weight="0.3298153" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49963045" weight="0.41688654" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49963045" visible="true" weight="0.41688654" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49889135" weight="0.3298153" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27198818" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16186252" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.5145119" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4762533" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -332,14 +293,14 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49963045" visible="true" weight="0.3298153" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2682927" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49963045" visible="true" weight="0.3298153" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -364,12 +325,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/visitor/Sem2Visitor.java</url>
-          <line>57</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/visitor/Sem1Visitor.java</url>
           <line>82</line>
           <properties />
@@ -377,20 +332,61 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/visitor/Sem2Visitor.java</url>
-          <line>80</line>
+          <line>78</line>
           <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
+        <watch expression="classInstance.name" language="JAVA" />
         <watch expression="classInstance.superName" language="JAVA" />
         <watch expression="classInstance.superLink" language="JAVA" />
         <watch expression="globalSymTab.entrySet()" language="JAVA" />
+        <watch expression="classInstance.superLink.subclasses" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>classInstance.name</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>classInstance.superLink.subclasses</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>globalSymTab.entrySet()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>globalSymTab.toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>globalSymTab.entrySet</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>classInstance.superLink</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>classInstance.superName</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/TestSimp.java">
@@ -700,17 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/errorMsg/ErrorMsg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#998#999#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW3Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -728,50 +713,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestSimp.java">
+    <entry file="file://$PROJECT_DIR$/src/syntaxtree/AstList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="15" selection-start-column="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/InhVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="129">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
           <folding>
-            <element signature="e#162#163#0" expanded="true" />
-            <element signature="e#5256#5257#0" expanded="true" />
-            <element signature="e#5285#5286#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/Sem1Visitor.java">
+    <entry file="file://$PROJECT_DIR$/src/errorMsg/ErrorMsg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="15">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
-            <element signature="e#962#963#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDecl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#998#999#0" expanded="true" />
+            <element signature="e#1014#1015#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -783,20 +741,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/syntaxtree/AstList.java">
+    <entry file="file://$PROJECT_DIR$/src/visitor/InhVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="15">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
-            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#5256#5257#0" expanded="true" />
+            <element signature="e#5285#5286#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/syntaxtree/ClassDecl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#1579#1580#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/Sem1Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestSimp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/visitor/Sem2Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="260">
+          <caret line="89" column="104" selection-start-line="89" selection-start-column="104" selection-end-line="89" selection-end-column="104" />
         </state>
       </provider>
     </entry>

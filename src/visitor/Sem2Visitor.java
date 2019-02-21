@@ -74,12 +74,20 @@ public class Sem2Visitor extends ASTvisitor {
 	}
 
 	public boolean containsClassCycle(ClassDecl current) {
+		String superClassName = current.superName;
+
 		if (current == null) {
 			// traversed to end of list so no cycles
 			return false;
 		}
-		if (current.superName.equals(current.name)) {
-			// circular inheritance
+
+		if (superClassName.equals(current.name)) {
+			errorMsg.error(current.pos, "Superclass name matches name of current class: " + current.name);
+			return true;
+		}
+
+		if (globalSymTab.get(superClassName).superName.equals(current.name)) {
+			errorMsg.error(current.pos, "Superclass name " + globalSymTab.get(superClassName).name + " is extending current class : " + current.name);
 			return true;
 		}
 
