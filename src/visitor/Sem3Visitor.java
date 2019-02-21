@@ -44,6 +44,7 @@ public class Sem3Visitor extends ASTvisitor {
 		currentClass = null;
 	}
 
+	// Reset local symbol table and traverse subnodes
 	@Override
 	public Object visitMethodDecl(MethodDecl myMethod) {
 		this.localSymTab = new Hashtable<String, VarDecl>();

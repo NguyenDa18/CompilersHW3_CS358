@@ -42,6 +42,9 @@ public class Sem2Visitor extends ASTvisitor {
 			}
 
 			// Check for cycles: how???
+			if (containsClassCycle(classInstance)) {
+				errorMsg.error(classInstance.pos, "Error: cycle detected for class name: " + classInstance.name);
+			}
 		}
 
 		return null;
@@ -51,10 +54,9 @@ public class Sem2Visitor extends ASTvisitor {
 	@Override
 	public Object visitClassDecl(ClassDecl classInstance) {
 		if (classInstance.superName != null) {
-
 			if (globalSymTab.containsKey(classInstance.superName)) {
 				classInstance.superLink = globalSymTab.get(classInstance.superName);
-				// classInstance.superLink.subclasses.addElement(classInstance);
+				 classInstance.superLink.subclasses.addElement(classInstance);
 			}
 			else if (classInstance.superName.equals("")) {
 				// errorMsg.warning(classInstance.pos, "Empty supername");
@@ -69,6 +71,19 @@ public class Sem2Visitor extends ASTvisitor {
 		}
 
 		return null;
+	}
+
+	public boolean containsClassCycle(ClassDecl current) {
+		if (current == null) {
+			// traversed to end of list so no cycles
+			return false;
+		}
+		if (current.superName.equals(current.name)) {
+			// circular inheritance
+			return true;
+		}
+
+		return containsClassCycle(current.superLink);
 	}
 	
 }

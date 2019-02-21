@@ -103,7 +103,7 @@ public class Sem1Visitor extends ASTvisitor {
 	// VISIT METHODS //
 	///////////////////
 
-	// Add class declarations to global symbol table
+	// Add class declarations to global symbol table, by recursively traversing AST
 	@Override
 	public Object visitClassDecl(ClassDecl myClass) {
 		if (!globalSymTab.containsKey(myClass.name)) {

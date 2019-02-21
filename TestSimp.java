@@ -32,7 +32,8 @@ class Presto extends Godzilla {
 
 }
 
-class Koro {
+class Koro extends Presto {
 
 }
+
 
