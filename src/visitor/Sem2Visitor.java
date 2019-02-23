@@ -43,7 +43,7 @@ public class Sem2Visitor extends ASTvisitor {
 
 			// Check for cycles: how???
 			if (containsClassCycle(classInstance)) {
-				errorMsg.error(classInstance.pos, "Error: cycle detected for class name: " + classInstance.name);
+				errorMsg.info("Error: cycle detected for class name: " + classInstance.name);
 			}
 		}
 
