@@ -1,6 +1,8 @@
 class Godzilla {
+
 	public boolean doesHeRoar() {
 		int roar = 7;
+		int max = joe + 1;
 		roarProb = james > roar;
 		return roarProb;
 	}
@@ -18,7 +20,15 @@ class Presto extends Godzilla {
     	while (true) {
     		int count = n+4;
     		foo(count);
+    		break;
     	}
+
+		while (true) {
+			int count1 = n+4;
+			foo(count1);
+			break;
+		}
+
     }
     public void foo(int a) {
     }
