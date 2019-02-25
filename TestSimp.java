@@ -1,4 +1,4 @@
-class Godzilla extends Presto {
+class Godzilla {
 	public boolean doesHeRoar() {
 		int roar = 7;
 		roarProb = james > roar;
@@ -13,7 +13,7 @@ class Presto extends Godzilla {
     	n++;
     	if (x && q < guy + rose) {
     		boolean hog = Gage instanceof Barry;
-			boolean hog = true;
+
 		}
     	while (true) {
     		int count = n+4;
@@ -23,15 +23,12 @@ class Presto extends Godzilla {
     public void foo(int a) {
     }
 
-    // public boolean foo(boolean k) {
-    // 	Jake myJake = new Jake();
-    // 	return k;
-	// }
+     public boolean food(boolean k) {
+     	Jake myJake = new Jake();
+     	return k;
+	 }
 
 }
 
-class Koro extends Presto {
-
-}
 
 

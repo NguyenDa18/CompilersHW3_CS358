@@ -91,7 +91,7 @@ public class Sem2Visitor extends ASTvisitor {
 			return true;
 		}
 
-		return containsClassCycle(current.superLink);
+		return false;
 	}
 	
 }

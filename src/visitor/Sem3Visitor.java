@@ -38,12 +38,20 @@ public class Sem3Visitor extends ASTvisitor {
 
 	private void initInstanceVars(Hashtable<String,ClassDecl> globalTab) {
 		breakTargetStack = new Stack<BreakTarget>();
+		loopStack = new Stack<While>();
 		globalSymTab = globalTab;
 		localSymTab = new Hashtable<String,VarDecl>();
 
 
-
 		currentClass = null;
+		uninitVarDecl = null;
+	}
+
+	@Override
+	public Object visitClassDecl(ClassDecl myClassDecl) {
+		this.currentClass = myClassDecl;
+
+		return super.visitClassDecl(myClassDecl);
 	}
 
 	@Override
@@ -68,6 +76,8 @@ public class Sem3Visitor extends ASTvisitor {
 		// }
 		// myBreak.breakLink
 
+		return null;
+
 	}
 
 	// create a new Hashtable object and store it in localSymTab, traverse the subnodes
@@ -83,14 +93,14 @@ public class Sem3Visitor extends ASTvisitor {
 		this.uninitVarDecl = myLocalVar;
 
 		// Traverse subnodes
-		super.visitLocalVarDecl(uninitVarDecl);
+		super.visitLocalVarDecl(myLocalVar);
 
 		// replace entry in local symbol table with actual variable
-		if (!this.localSymTab.containsKey(myID.name)) {
-			this.localSymTab.put(myID.name, myID);
+		if (!this.localSymTab.containsKey(myLocalVar.name)) {
+			this.localSymTab.put(myLocalVar.name, myLocalVar);
 		}
 		else {
-			errorMsg.error(myID.pos, "Error: duplicate variable name: " + myID.name);
+			errorMsg.error(myLocalVar.pos, "Error: duplicate variable name: " + myLocalVar.name);
 		}
 
 		// Clear current local var decl
@@ -101,9 +111,37 @@ public class Sem3Visitor extends ASTvisitor {
 	}
 
 	@Override
-	public Object visitIdentifierExp(IdentifierExp myID) {
-		super.visitLocalVarDecl()
+	public Object visitFormalDecl(FormalDecl myFormalDecl) {
+		this.uninitVarDecl = myFormalDecl;
 
+		super.visitFormalDecl(myFormalDecl);
+
+		// Add to symbol table
+		if (!this.localSymTab.containsKey(myFormalDecl.name)) {
+			this.localSymTab.put(myFormalDecl.name, myFormalDecl);
+		}
+		else {
+			errorMsg.error(myFormalDecl.pos, "Error: duplicate variable name: " + myFormalDecl.name);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Object visitIdentifierExp(IdentifierExp myID) {
+		// local decl getting initialized
+
+		return null;
+
+	}
+
+	@Override
+	public Object visitIdentifierType(IdentifierType myIDType) {
+		if (globalSymTab.containsKey(myIDType.name)) {
+			myIDType.link = globalSymTab.get(myIDType.name);
+		}
+
+		return null;
 	}
 
 	@Override
@@ -116,15 +154,20 @@ public class Sem3Visitor extends ASTvisitor {
 	}
 
 	@Override
+	public Object visitProgram(Program myProgram) {
+		super.visitProgram(myProgram);
+
+		return null;
+	}
+
+	@Override
 	public Object visitBlock(Block myBlock) {
 		// traverse subnodes
 		super.visitBlock(myBlock);
 
 		// iterate through Block's statement list and remove all declarations found from local symbol table
 		for (Statement stmt: myBlock.stmts) {
-			if (stmt instanceof LocalVarDecl) {
-				
-			}
+
 
 		}		
 
