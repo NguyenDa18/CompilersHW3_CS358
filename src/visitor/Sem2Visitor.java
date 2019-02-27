@@ -28,7 +28,7 @@ public class Sem2Visitor extends ASTvisitor {
 
 	@Override
 	public Object visitProgram(Program myProgram) {
-		// Visit all of our subnodes
+		// visit all my subnodes
 		super.visitProgram(myProgram);
 
 		// Perform class checks
@@ -41,7 +41,6 @@ public class Sem2Visitor extends ASTvisitor {
 				errorMsg.error(classInstance.pos, "Error: cannot extend " + classInstance.name + " for RunMain superclass");
 			}
 
-			// Check for cycles: how???
 			if (containsClassCycle(classInstance)) {
 				errorMsg.info("Error: cycle detected for class name: " + classInstance.name);
 			}
@@ -50,7 +49,6 @@ public class Sem2Visitor extends ASTvisitor {
 		return null;
 	}
 
-	// Link child and super classes
 	@Override
 	public Object visitClassDecl(ClassDecl classInstance) {
 		if (classInstance.superName != null) {

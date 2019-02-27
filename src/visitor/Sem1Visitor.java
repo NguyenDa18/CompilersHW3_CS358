@@ -115,8 +115,8 @@ public class Sem1Visitor extends ASTvisitor {
 
 		// Set current class
 		currentClass = myClass;
-		
 
+		// traverse subnodes -populate class' instance variable and method symbol tables with empty Hashtable objects
 		return super.visitClassDecl(myClass);
 	}
 
@@ -129,6 +129,8 @@ public class Sem1Visitor extends ASTvisitor {
 		else {
 			errorMsg.error(myVar.pos, "Error: duplicate instance variable declaration: " + myVar.name);
 		}
+
+		// no need to traverse subnodes, nothing lower down that we need to do anything with
 		return null;
 	}
 
@@ -143,6 +145,7 @@ public class Sem1Visitor extends ASTvisitor {
 			return null;
 		}
 
+		// no need to traverse subnodes, nothing lower down that we need to do anything with
 		return null;
 	}
 

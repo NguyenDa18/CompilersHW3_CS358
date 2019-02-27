@@ -24,9 +24,9 @@ public class Sem3Visitor extends ASTvisitor {
 	Hashtable<String, VarDecl> localSymTab;
 	Stack<BreakTarget> breakTargetStack;
 	Stack<While> loopStack;
-	VarDecl uninitVarDecl;
+	VarDecl uninitVarDecl; // current local variable processed
 
-        ErrorMsg errorMsg;
+	ErrorMsg errorMsg;
 
 	// dummy variable declaration indicating "uninitialized variable"
 	// private static VarDecl uninitVarDecl = new InstVarDecl(-1, null, "$$$$");
@@ -37,10 +37,10 @@ public class Sem3Visitor extends ASTvisitor {
 	}
 
 	private void initInstanceVars(Hashtable<String,ClassDecl> globalTab) {
-		breakTargetStack = new Stack<BreakTarget>();
+		breakTargetStack = new Stack<BreakTarget>(); // Keep track of enclosing While / Switch statements
 		loopStack = new Stack<While>();
-		globalSymTab = globalTab;
-		localSymTab = new Hashtable<String,VarDecl>();
+		globalSymTab = globalTab; // Map class name to corresponding ClassDecl node
+		localSymTab = new Hashtable<String,VarDecl>(); // Symbol table to track local vars
 
 
 		currentClass = null;
@@ -50,41 +50,7 @@ public class Sem3Visitor extends ASTvisitor {
 	@Override
 	public Object visitClassDecl(ClassDecl myClassDecl) {
 		this.currentClass = myClassDecl;
-
 		return super.visitClassDecl(myClassDecl);
-	}
-
-	@Override
-	public Object visitWhile(While myWhile) {
-		loopStack.push(myWhile);
-		super.visitWhile(myWhile);
-		loopStack.pop();
-
-		return null;
-	}
-
-	// @Override
-	// public Object visitBreakTarget(BreakTarget myBrkTrgt) {
-	// 	errorMsg.error(myBrkTrgt.pos, "My break target: " + myBrkTrgt.toString());
-
-	// 	return null;
-	// }
-
-
-	@Override
-	public Object visitBreak(Break myBreak) {
-		// set Break's link to be element at top of the break-target stack
-				// if empty => error
-		if (loopStack.size() <= 0) {
-			errorMsg.error(myBreak.pos, "Error: empty stack to push Break statement.");
-		}
-		// else {
-
-		// }
-		// myBreak.breakLink
-
-		return null;
-
 	}
 
 	// create a new Hashtable object and store it in localSymTab, traverse the subnodes
@@ -92,15 +58,12 @@ public class Sem3Visitor extends ASTvisitor {
 	public Object visitMethodDecl(MethodDecl myMethod) {
 		this.localSymTab = new Hashtable<String, VarDecl>();
 		return super.visitMethodDecl(myMethod);
-
-
 	}
 
 	@Override
 	public Object visitLocalVarDecl(LocalVarDecl myLocalVar) {
 		// put entry in local symbol table, binding to uninitVarDecl
 		this.uninitVarDecl = myLocalVar;
-
 
 		// Traverse subnodes
 		super.visitLocalVarDecl(myLocalVar);
@@ -122,6 +85,7 @@ public class Sem3Visitor extends ASTvisitor {
 
 	@Override
 	public Object visitFormalDecl(FormalDecl myFormalDecl) {
+		// put entry in local symbol table, binding to uninitVarDecl
 		this.uninitVarDecl = myFormalDecl;
 
 		super.visitFormalDecl(myFormalDecl);
@@ -134,29 +98,83 @@ public class Sem3Visitor extends ASTvisitor {
 			errorMsg.error(myFormalDecl.pos, "Error: duplicate variable name: " + myFormalDecl.name);
 		}
 
+		this.uninitVarDecl = null;
+
 		return null;
 	}
+
+
+	@Override
+	public Object visitInstVarDecl(InstVarDecl myInstVar) {
+		// Check to make sure name of var is NOT length
+		if (myInstVar.name.equals("length")) {
+			errorMsg.error(myInstVar.pos, "Error: instance variable cannot be named \" length \"");
+		}
+
+		return super.visitInstVarDecl(myInstVar);
+	}
+
+	@Override
+	public Object visitBlock(Block myBlock) {
+		// traverse subnodes
+		super.visitBlock(myBlock);
+
+		// remove each var declaration in local symbol table that corresponds to declaration in this block's statement list
+		for (Statement stmt: myBlock.stmts) {
+			if (stmt instanceof LocalDeclStatement) {
+				localSymTab.remove(((LocalDeclStatement) stmt).localVarDecl.name);
+			}
+
+		}
+
+		return null;
+	}
+
+	// @Override
+	// public Object visitBreakTarget(BreakTarget myBrkTrgt) {
+	// 	errorMsg.error(myBrkTrgt.pos, "My break target: " + myBrkTrgt.toString());
+
+	// 	return null;
+	// }
+
 
 	@Override
 	public Object visitIdentifierExp(IdentifierExp myID) {
 		VarDecl link = null;
-		// local decl getting initialized
+
+		// local decl equal to uninitVarDecl, give error
 		if (uninitVarDecl != null) {
 			// identifier name is same as current local vardecl
 			if (myID.name.equals(uninitVarDecl.name)) {
-				errorMsg.error(myID.pos, "Error: identifier " + myID.name + " is used to initialize " + myID.name);
+				errorMsg.error(myID.pos, "Error: identifier " + myID.name + " is equal to uninitialized variable: " + uninitVarDecl.name);
 			}
 		}
 
-		// Bind to local symbol table
+		// otherwise, set IDExp's link so it refers to declaration
 		if (localSymTab.containsKey(myID.name)) {
 			link = localSymTab.get(myID.name);
 		}
 
+		// identifier not found:
+		else {
+			ClassDecl c = currentClass;
+
+			while (c.superLink != null) {
+				if (c.instVarTable.containsKey(myID.name)) {
+					link = c.instVarTable.get(myID.name);
+					break;
+				}
+				c = c.superLink;
+			}
+		}
+
+		// Set the link
 		if (link != null) {
 			myID.link = link;
 		}
-
+		else {
+			errorMsg.error(myID.pos, "Undefined variable name: " + myID.name);
+		}
 
 		return null;
 
@@ -167,39 +185,36 @@ public class Sem3Visitor extends ASTvisitor {
 		if (globalSymTab.containsKey(myIDType.name)) {
 			myIDType.link = globalSymTab.get(myIDType.name);
 		}
-
-		return null;
-	}
-
-	@Override
-	public Object visitInstVarDecl(InstVarDecl myInstVar) {
-		if (myInstVar.name.equals("length")) {
-			errorMsg.error(myInstVar.pos, "Error: instance variable cannot be named \" length \"");
-		}
-
-		return super.visitInstVarDecl(myInstVar);
-	}
-
-	@Override
-	public Object visitProgram(Program myProgram) {
-		super.visitProgram(myProgram);
-
-		return null;
-	}
-
-	@Override
-	public Object visitBlock(Block myBlock) {
-		// traverse subnodes
-		super.visitBlock(myBlock);
-
-		// iterate through Block's statement list and remove all declarations found from local symbol table
-		for (Statement stmt: myBlock.stmts) {
-
-
+		else {
+			errorMsg.error(myIDType.pos, "Undefined class name: " + myIDType.name);
 		}
 
 		return null;
 	}
 
+	@Override
+	public Object visitWhile(While myWhile) {
+		breakTargetStack.push(myWhile);
+		super.visitWhile(myWhile);
+		breakTargetStack.pop();
 
+		return null;
+	}
+
+	@Override
+	public Object visitBreak(Break myBreak) {
+		// if empty breakTargetStack, emit error
+		if (breakTargetStack.isEmpty()) {
+			errorMsg.error(myBreak.pos, "Break statement outside of loop/switch");
+		}
+		else {
+			myBreak.breakLink = breakTargetStack.firstElement();
+		}
+
+		return null;
+
+	}
 }
+
+
+
