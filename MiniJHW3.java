@@ -10,7 +10,7 @@ class Class1 extends Lib {
     int c;
     public String myMethod(int b) {
         while(c < 10) {
-            int j = h;
+
             int a = c + b;
             c = c + a;
             break;

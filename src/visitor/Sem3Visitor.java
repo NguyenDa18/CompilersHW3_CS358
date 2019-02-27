@@ -61,19 +61,19 @@ public class Sem3Visitor extends ASTvisitor {
 	}
 
 	@Override
-	public Object visitLocalVarDecl(LocalVarDecl myLocalVar) {
+	public Object visitVarDecl(VarDecl myLocalVar) {
 		// put entry in local symbol table, binding to uninitVarDecl
 		this.uninitVarDecl = myLocalVar;
 
 		// Traverse subnodes
-		super.visitLocalVarDecl(myLocalVar);
+		super.visitVarDecl(myLocalVar);
 
 		// replace entry in local symbol table with actual variable
 		if (!this.localSymTab.containsKey(myLocalVar.name)) {
 			this.localSymTab.put(myLocalVar.name, myLocalVar);
 		}
 		else {
-			errorMsg.error(myLocalVar.pos, "Error: duplicate variable name: " + myLocalVar.name);
+			errorMsg.error(myLocalVar.pos, "Duplicate variable name: " + myLocalVar.name);
 		}
 
 		// Clear current local var decl
@@ -81,26 +81,6 @@ public class Sem3Visitor extends ASTvisitor {
 
 		return null;
 
-	}
-
-	@Override
-	public Object visitFormalDecl(FormalDecl myFormalDecl) {
-		// put entry in local symbol table, binding to uninitVarDecl
-		this.uninitVarDecl = myFormalDecl;
-
-		super.visitFormalDecl(myFormalDecl);
-
-		// Add to symbol table
-		if (!this.localSymTab.containsKey(myFormalDecl.name)) {
-			this.localSymTab.put(myFormalDecl.name, myFormalDecl);
-		}
-		else {
-			errorMsg.error(myFormalDecl.pos, "Error: duplicate variable name: " + myFormalDecl.name);
-		}
-
-		this.uninitVarDecl = null;
-
-		return null;
 	}
 
 
@@ -129,13 +109,6 @@ public class Sem3Visitor extends ASTvisitor {
 
 		return null;
 	}
-
-	// @Override
-	// public Object visitBreakTarget(BreakTarget myBrkTrgt) {
-	// 	errorMsg.error(myBrkTrgt.pos, "My break target: " + myBrkTrgt.toString());
-
-	// 	return null;
-	// }
 
 
 	@Override
@@ -194,6 +167,7 @@ public class Sem3Visitor extends ASTvisitor {
 
 	@Override
 	public Object visitWhile(While myWhile) {
+		// before subnodes pushes the While node onto stack
 		breakTargetStack.push(myWhile);
 		super.visitWhile(myWhile);
 		breakTargetStack.pop();
